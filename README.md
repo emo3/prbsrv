@@ -1,4 +1,4 @@
-# probe Cookbook
+# prbsrv Cookbook
 
 Todo: Put a description of your cookbook here. Include at a high level the
 intent and purpose of why someone would use this cookbook.
@@ -39,17 +39,17 @@ tools it provides to configure nodes. Here's a simple example of using a
 cookbook and it's recipe. You'll want to elaborate on your own steps and include
 any necessary steps like setting required attributes.
 
-Place a dependency on the `objsrv` cookbook in your cookbook's
+Place a dependency on the `prbsrv` cookbook in your cookbook's
 `metadata.rb`.
 
 ```
-depends 'probe'
+depends 'prbsrv'
 ```
 
 Then, in a recipe:
 
 ```
-include_recipe 'probe::fix_netcool'
+include_recipe 'prbsrv::fix_netcool'
 ```
 
 If your cookbook provides resources, be sure to include examples of how to use
@@ -57,7 +57,7 @@ those resources, in addition to the resources documentation section below.
 
 ## Attributes
 
-* `default['objsrv']['my_attribute']`: Describe the purpose or usage of
+* `default['prbsrv']['my_attribute']`: Describe the purpose or usage of
   this attribute. Defaults to `somevalue`. Indicate the attribute type if
   necessary.
 
@@ -97,7 +97,7 @@ todo: Describe this example and what it will accomplish.
 
 ```Ruby
 # code samples are helpful
-objsrv_resource_name 'some value' do
+prbsrv_resource_name 'some value' do
   property_name 'another value'
   property_name2 'foo bar'
   action :do_something
@@ -108,7 +108,7 @@ And don't forgot to show an example for your other actions.
 
 ```Ruby
 # code samples are helpful
-objsrv_resource_name 'some value' do
+prbsrv_resource_name 'some value' do
   property_name 'another value'
   property_name2 'foo bar'
   action :another_action

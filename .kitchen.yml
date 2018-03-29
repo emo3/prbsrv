@@ -1,11 +1,11 @@
 ---
 driver:
   name: vagrant
-  vm_hostname: probe
+  vm_hostname: prbsrv
   customize:
     memory: 4096
     cpus: 1
-    name: probe
+    name: prbsrv
   network:
    - ['private_network', ip: <%= ENV['PSP'] %>]
 
@@ -23,10 +23,10 @@ platforms:
   - name: mycsc-7.4
 
 suites:
-  - name: objsrv
+  - name: prbsrv
     run_list:
 #      - recipe[objsrv::do_prs]
-      - recipe[objsrv::make_ncp81]
+      - recipe[prbsrv::make_ncp81]
     verifier:
       inspec_tests:
         - test/smoke/default
