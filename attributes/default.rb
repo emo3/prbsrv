@@ -1,10 +1,8 @@
-default['prbsrv']['base_ver']    = '8.1.0'
-default['prbsrv']['point_ver']   = "#{node['prbsrv']['base_ver']}.1"
+default['prbsrv']['package']     = 'nc81-probes.zip'
 default['prbsrv']['cots_dir']    = '/sfcots'
 default['prbsrv']['app_dir']     = "#{node['prbsrv']['cots_dir']}/apps"
 default['prbsrv']['nc_dir']      = "#{node['prbsrv']['app_dir']}/netcool"
 default['prbsrv']['media_dir']   = "#{node['prbsrv']['app_dir']}/media"
+default['prbsrv']['install_dir'] = "#{node['prbsrv']['media_dir']}/ncp81"
 default['prbsrv']['temp_dir']    = '/tmp'
 default['prbsrv']['media_url']   = 'http://10.1.1.30/media'
-# default['prbsrv']['rhel']        = %w(bc ntp firefox libXtst compat-libstdc++-33.i686)
-default['prbsrv']['rhel']        = %w(bc ntp firefox compat-libstdc++-33.i686 libXtst.i686 compat-libstdc++-33 compat-db libXp libXmu libXtst pam libXft gtk2 xauth)

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <agent-input clean='true' temporary='true'>
   <variables>
-    <variable name='sharedLocation' value='/tivoli/apps/IBMIMShared'/>
-    <variable name='installLocation' value='/tivoli/apps/netcool8'/>
+    <variable name='sharedLocation' value='<%= node['prbsrv']['app_dir'] %>/IBMIMShared'/>
+    <variable name='installLocation' value='<%= node['prbsrv']['nc_dir'] %>'/>
   </variables>
   <server>
-    <repository location='file:/tivoli/apps/media/probes81/nco-p-mttrapd_20_0/'/>
-    <repository location='file:/tivoli/apps/media/probes81/nco-p-tivoli-eif_13_0/'/>
+    <repository location='file:<%= node['prbsrv']['install_dir'] %>/nco-p-mttrapd_20_0/'/>
+    <repository location='file:<%= node['prbsrv']['install_dir'] %>/nco-p-tivoli-eif_13_0/'/>
   </server>
   <profile id='IBM Tivoli Netcool OMNIbus' installLocation='${installLocation}'>
     <data key='user.migratedata,com.ibm.tivoli.omnibus.core' value='false'/>

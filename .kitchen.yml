@@ -1,11 +1,10 @@
 ---
 driver:
   name: vagrant
-  vm_hostname: prbsrv
   customize:
-    memory: 4096
-    cpus: 1
-    name: prbsrv
+    memory: <%= ENV['PSR'] %>
+    cpus: <%= ENV['PSC'] %>
+    name: <%= ENV['PS'] %>
   network:
    - ['private_network', ip: <%= ENV['PSP'] %>]
 
