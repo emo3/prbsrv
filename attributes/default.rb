@@ -6,3 +6,5 @@ default['prbsrv']['media_dir']   = "#{node['prbsrv']['app_dir']}/media"
 default['prbsrv']['install_dir'] = "#{node['prbsrv']['media_dir']}/ncp81"
 default['prbsrv']['temp_dir']    = '/tmp'
 default['prbsrv']['media_url']   = 'http://10.1.1.30/media'
+default['prbsrv']['nc_act']      = 'netcool'
+default['prbsrv']['nc_grp']      = 'ncoadmin'
