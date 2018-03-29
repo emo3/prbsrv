@@ -19,4 +19,5 @@ supports 'redhat'
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/prbsrv'
-depends 'objsrv', '>= 0.1.0'
+depends 'delivery-truck'
+depends 'objsrv', '~> 0.1.0'
