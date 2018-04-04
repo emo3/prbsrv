@@ -31,3 +31,5 @@ suites:
       inspec_tests:
         - test/smoke/default
     attributes:
+      PAP: <%= ENV['OSP'] %>
+      PA: <%= ENV['OS'] %>
