@@ -20,4 +20,4 @@ supports 'redhat'
 #
 # source_url 'https://github.com/<insert_org_here>/prbsrv'
 depends 'delivery-truck'
-depends 'objsrv', '~> 0.1.0'
+depends 'nc_base', '~> 0.1.0'
