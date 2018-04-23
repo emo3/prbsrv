@@ -8,7 +8,7 @@ provisioner:
   name: chef_zero
   encrypted_data_bag_secret_key_path: 'secrets/fakey-mcfakerton'
   data_bags_path: './data_bags'
-  product_name: probe
+  product_name: prbsrv
 
 platforms:
   - name: centos-7.4
