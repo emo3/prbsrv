@@ -26,10 +26,14 @@ suites:
   - name: prbsrv
     run_list:
 #      - recipe[objsrv::do_prs]
-      - recipe[prbsrv::make_ncp81]
+      - recipe[prbsrv::make_nc_pb]
     verifier:
       inspec_tests:
         - test/smoke/default
     attributes:
+      nc_pwd: <%= ENV['NCP'] %>
+      root_pwd: <%= ENV['RPW'] %>
+      OS: <%= ENV['OS'] %>
+      PS: <%= ENV['PS'] %>
       PAP: <%= ENV['OSP'] %>
       PA: <%= ENV['OS'] %>

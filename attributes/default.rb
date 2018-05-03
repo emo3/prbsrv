@@ -1,5 +1,4 @@
-default['prbsrv']['package']     = 'nc81-probes.zip'
-default['prbsrv']['cots_dir']    = '/sfcots'
+default['prbsrv']['cots_dir']    = '/cots'
 default['prbsrv']['app_dir']     = "#{node['prbsrv']['cots_dir']}/apps"
 default['prbsrv']['nc_dir']      = "#{node['prbsrv']['app_dir']}/netcool"
 default['prbsrv']['media_dir']   = "#{node['prbsrv']['app_dir']}/media"

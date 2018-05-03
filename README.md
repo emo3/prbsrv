@@ -49,7 +49,7 @@ depends 'prbsrv'
 Then, in a recipe:
 
 ```
-include_recipe 'prbsrv::make_ncp81'
+include_recipe 'prbsrv::make_nc_pb'
 ```
 
 If your cookbook provides resources, be sure to include examples of how to use
