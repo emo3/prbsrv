@@ -121,10 +121,10 @@ NHttpd.ExpireTimeout: 15
 NHttpd.NumWorkThreads: 5
 NRestOS.Enable: FALSE
 NRestOS.OSLCRDFMsgFormat: 'STANDARD'
-PA.Name: '<%= node['objsrv']['os_pa_name'] %>'
-PA.Password: '<%= node['objsrv']['pa_epwd'] %>'
-PA.Username: '<%= node['objsrv']['nc_act'] %>'
-PasswordEncryption: '<%= node['objsrv']['encryption'] %>'
+PA.Name: '<%= node['prbsrv']['os_pa_name'] %>'
+PA.Password: '<%= node['prbsrv']['pa_epwd'] %>'
+PA.Username: '<%= node['prbsrv']['nc_act'] %>'
+PasswordEncryption: '<%= node['prbsrv']['encryption'] %>'
 PasswordFormat: '8:1:1:0:1'
 Profile: TRUE
 ProfileStatsInterval: 60

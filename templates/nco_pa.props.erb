@@ -49,10 +49,10 @@
 # Version: FALSE				# BOOLEAN (Display servers version details)
 # WalkHostTable: FALSE 				# BOOLEAN (Walk the hosts table to verify all aliases (UNIX))
 
-ConfigFile: '$OMNIHOME/etc/<%= node['objsrv']['os_pa_name'] %>.conf' 	# STRING (The name of the configuration file)
-MessageLog: '$OMNIHOME/log/<%= node['objsrv']['os_pa_name'] %>.log' 	# STRING (Path to the message log file)
-Name: '<%= node['objsrv']['os_pa_name'] %>'				# STRING (Name that server is to use)
-PidFile: './var/<%= node['objsrv']['os_pa_name'] %>.pid' 			# STRING (Filename for pid storage relative to $OMNIHOME (UNIX))
-PropsFile: '$OMNIHOME/etc/<%= node['objsrv']['os_pa_name'] %>.props' 	# STRING (Path to the properties file)
+ConfigFile: '$OMNIHOME/etc/<%= node['prbsrv']['os_pa_name'] %>.conf' 	# STRING (The name of the configuration file)
+MessageLog: '$OMNIHOME/log/<%= node['prbsrv']['os_pa_name'] %>.log' 	# STRING (Path to the message log file)
+Name: '<%= node['prbsrv']['os_pa_name'] %>'				# STRING (Name that server is to use)
+PidFile: './var/<%= node['prbsrv']['os_pa_name'] %>.pid' 			# STRING (Filename for pid storage relative to $OMNIHOME (UNIX))
+PropsFile: '$OMNIHOME/etc/<%= node['prbsrv']['os_pa_name'] %>.props' 	# STRING (Path to the properties file)
 
 # End of File
