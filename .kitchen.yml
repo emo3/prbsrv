@@ -26,7 +26,7 @@ suites:
   - name: prbsrv
     run_list:
 #      - recipe[objsrv::do_prs]
-      - recipe[prbsrv::make_nc_pb]
+      - recipe[prbsrv::make_nc_ps]
     verifier:
       inspec_tests:
         - test/smoke/default

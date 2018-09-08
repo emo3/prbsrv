@@ -1,6 +1,6 @@
 #################################################################
 # Create directories
-directory node['objsrv']['app_dir'] do
+directory node['prbsrv']['app_dir'] do
   owner 'root'
   group 'root'
   mode '0755'
@@ -10,7 +10,7 @@ end
 
 create_xfs 'create netcool extra file system' do
   lv_size   '60G'
-  lv_name   node['objsrv']['lv_name']
-  mnt_point node['objsrv']['app_dir']
+  lv_name   node['prbsrv']['lv_name']
+  mnt_point node['prbsrv']['app_dir']
   action :run
 end
