@@ -1,0 +1,84 @@
+########################################################################
+#
+#       Licensed Materials - Property of IBM
+#
+#       5724-P09
+#
+#       (C) Copyright IBM Corp. 2002 - 2013. All Rights Reserved
+#
+#       US Government Users Restricted Rights - Use, duplication
+#       or disclosure restricted by GSA ADP Schedule Contract
+#       with IBM Corp.
+#
+#
+# Ident: $Id: mkprops 1.21 2003/08/20 15:29:09 csmith Development $
+#
+#######################################################################
+
+#######################################################################
+#
+# Property Name					Default
+#
+# Generic Properties
+#
+# AuthPassword          	: ''
+# AuthUserName          	: ''
+# AutoSAF               	: 0
+# Buffering             	: 0
+# BufferSize            	: 10
+# Help                  	: 0
+# LookupTableMode       	: 3
+# Manager               	: 'tivoli_eif'
+# MaxLogFileSize        	: 1048576
+# MaxRawFileSize        	: -1
+# MaxSAFFileSize        	: 1048576
+# MessageLevel          	: 'warn'
+# MessageLog            	: '$OMNIHOME/log/tivoli_eif.log'
+# MsgDailyLog           	: 0
+# MsgTimeLog            	: '0000'
+# Name                  	: 'tivoli_eif'
+# NetworkTimeout        	: 0
+# PollServer            	: 0
+# Props.CheckNames      	: TRUE
+# PropsFile             	: '$OMNIHOME/probes/<arch>/tivoli_eif.props'
+# RawCapture            	: 0
+# RawCaptureFile        	: '$OMNIHOME/var/tivoli_eif.cap'
+# RawCaptureFileAppend  	: 0
+# RetryConnectionCount  	: 15
+# RetryConnectionTimeOut	: 30
+# RulesFile             	: '$OMNIHOME/probes/<arch>/tivoli_eif.rules'
+# SAFFileName           	: '$OMNIHOME/var/tivoli_eif.store'
+# Server                	: 'NCOMS'
+# ServerBackup          	: ''
+# StoreAndForward       	: 1
+# Version               	: 0
+#
+# Specific Properties
+#
+# HandleMalformedAlarms		: "true"
+# EIFHeartBeatInterval		: 0
+# EIFHeartBeatFailures		: 0
+# EIFTraceFileName  		: '$OMNIHOME/var/tivoli_eif.trc' (Unix)
+# EIFTraceFileName	    	: '%OMNIHOME%\\var\\tivoli_eif.trc' (Windows)
+# EIFTraceLevel			: 'NO'
+# EIFDebugFileName  		: '$OMNIHOME/var/debug_eif.trc' (Unix)
+# EIFDebugFileName	    	: '%OMNIHOME%\\var\\debug_eif.trc' (Windows)
+# EIFDebugLevel			: 'NO'
+# EIFLogFileName		: '$OMNIHOME/var/tivoli_eif.log' (Unix)
+# EIFLogFileName	    	: '%OMNIHOME%\\var\\tivoli_eif.log' (Windows)
+# EIFLogLevel			: 'NO'
+# EventCopies           	: 1
+# FlushBufferInterval		: 0
+# MaxEventQueueSize     	: 10000
+# PortMapper            	: "false"
+# PortMapperNumber		: 100033057
+# PortNumber			: 9998
+# EIFReadRetryInterval		: 120
+# StreamCapture			: "false"
+# StreamCaptureFile		: '$OMNIHOME/var/tivoli_eif.stream' (Unix)
+# StreamCaptureFile		: '%OMNIHOME%\\var\\tivoli_eif.stream' (Windows)
+#
+#######################################################################
+PropsFile             	: '$OMNIHOME/etc/<%= @os_dir %>/tivoli_eif.props'
+RulesFile             	: '$OMNIHOME/etc/<%= @os_dir %>/tivoli_eif.rules'
+Server                	: '<%= node['prbsrv']['ncoms'] %>'

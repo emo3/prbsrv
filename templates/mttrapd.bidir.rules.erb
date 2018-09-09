@@ -1,0 +1,306 @@
+########################################################################
+#
+#       Licensed Materials - Property of IBM
+#       
+#       
+#       
+#       (C) Copyright IBM Corp. 2002, 2006, 2012, 2013. All Rights Reserved
+#       
+#       US Government Users Restricted Rights - Use, duplication
+#       or disclosure restricted by GSA ADP Schedule Contract
+#       with IBM Corp.
+#       
+#       ========================================================
+#       Module Information:
+#       
+#       DESCRIPTION:
+#       mttrapd.bidir.rules
+#       This files provides rules for SNMP Set and Get commands 
+#
+#
+#
+#######################################################################
+#
+# The following are the arguments for the SNMP Set and Get commands.
+#
+# $community     : The SNMP community string for V1 and V2c traps.
+#
+# $hostname      : Hostname or IP address of the target host.
+#
+# $userid        : User ID (for v3 only)
+#
+# $oid           : Identifier of the object.
+#
+# $type          : Type of the object.
+#
+# $value         : Value of the object.
+#
+# $port          : Target port number.
+#
+#######################################################################
+
+log(DEBUG, "Received " + $snmpreq + " request")
+
+$missing_arg=""
+
+if ( !(exists( $hostname )) )
+{
+	$missing_arg="hostname "
+}
+if ( !(exists( $oid )) )
+{
+	$missing_arg=$missing_arg + "oid "
+}
+if ( ! (match($snmpreq, "SNMPSET_V3") || match($snmpreq, "SNMPSET_V3_P") || match($snmpreq, "SNMPGET_V3") || match($snmpreq, "SNMPGET_V3_P")) )
+{ 
+	if ( !(exists($community)) )
+	{
+		$missing_arg=$missing_arg + "community "       				
+	}
+}
+
+switch($snmpreq) 
+{        
+	case "SNMPSET"|"SNMPSET_P":
+
+		if ( !(exists($type)) )
+		{
+			$missing_arg=$missing_arg + "type "
+		}
+		if ( !(exists($value)) )
+		{
+			$missing_arg=$missing_arg + "value "       				
+		}
+			
+		if ( match($snmpreq, "SNMPSET_P") )
+		{
+			if ( !(exists($port)) )
+			{
+				$missing_arg=$missing_arg + "port "       				
+			}        				
+		}
+
+		if ( match($missing_arg, "") )
+		{
+				if ( match($snmpreq, "SNMPSET") )
+				{
+					log(DEBUG, "Calling snmpset")
+					$success = snmpset($hostname, $oid, $type, $value, $community)
+				}
+				else
+				{
+					log(DEBUG, "Calling snmpset_p")
+					$success = snmpset_p($hostname, $oid, $type, $value, $community, $port)
+				}
+				
+				if (int($success) == 1)
+				{
+					log(DEBUG, $snmpreq + " request successful, value set to " + $value)
+				} 
+				else 
+				{
+					log(DEBUG, $snmpreq + " request unsuccessful")
+				}
+		}
+		else
+		{
+			log(ERROR, "Missing input to " + $snmpreq + " request: " + $missing_arg)
+		}
+
+	case "SNMPSET_V2C"|"SNMPSET_V2C_P":
+
+		if ( !(exists($type)) )
+		{
+			$missing_arg=$missing_arg + "type "
+		}
+		if ( !(exists($value)) )
+		{
+			$missing_arg=$missing_arg + "value "       				
+		}
+			
+		if ( match($snmpreq, "SNMPSET_V2C_P") )
+		{
+			if ( !(exists($port)) )
+			{
+				$missing_arg=$missing_arg + "port "       				
+			}        				
+		}
+
+		if ( match($missing_arg, "") )
+		{
+				if ( match($snmpreq, "SNMPSET_V2C") )
+				{
+					log(DEBUG, "Calling snmpset_v2c")
+					$success = snmpset_v2c($hostname, $oid, $type, $value, $community)
+				}
+				else
+				{
+					log(DEBUG, "Calling snmpset_v2c_p")
+					$success = snmpset_v2c_p($hostname, $oid, $type, $value, $community, $port)
+				}
+				
+				if (int($success) == 1)
+				{
+					log(DEBUG, $snmpreq + " request successful, value set to " + $value)
+				} 
+				else 
+				{
+					log(DEBUG, $snmpreq + " request unsuccessful")
+				}
+		}
+		else
+		{
+			log(ERROR, "Missing input to " + $snmpreq + " request: " + $missing_arg)
+		}
+
+	case "SNMPSET_V3"|"SNMPSET_V3_P":
+		
+		if ( !(exists($userid)) )
+		{
+			$missing_arg=$missing_arg + "userid "
+		}
+		if ( !(exists($type)) )
+		{
+			$missing_arg=$missing_arg + "type "
+		}
+		if ( !(exists($value)) )
+		{
+			$missing_arg=$missing_arg + "value "       				
+		}
+			
+		if ( match($snmpreq, "SNMPSET_V3_P") )
+		{
+			if ( !(exists($port)) )
+			{
+				$missing_arg=$missing_arg + "port "       				
+			}        				
+		}
+
+		if ( match($missing_arg, "") )
+		{
+				if ( match($snmpreq, "SNMPSET_V3") )
+				{
+					log(DEBUG, "Calling snmpset_v3")
+					$success = snmpset_v3($hostname, $userid, $oid, $type, $value)
+				}
+				else
+				{
+					log(DEBUG, "Calling snmpset_v3_p")
+					$success = snmpset_v3_p($hostname, $userid, $oid, $type, $value, $port)
+				}
+				
+				if (int($success) == 1)
+				{
+					log(DEBUG, $snmpreq + " request successful, value set to " + $value)
+				} 
+				else 
+				{
+					log(DEBUG, $snmpreq + " request unsuccessful")
+				}
+		}
+		else
+		{
+			log(ERROR, "Missing input to " + $snmpreq + " request: " + $missing_arg)
+		}
+			
+	case "SNMPGET"|"SNMPGET_P": 
+
+		if ( match($snmpreq, "SNMPGET_P") )
+		{
+			if ( !(exists($port)) )
+			{
+				$missing_arg=$missing_arg + "port "       				
+			}        				
+		}
+		if ( match($missing_arg, "") )
+		{
+			if ( match($snmpreq, "SNMPGET") )
+			{
+				log(DEBUG, "Calling snmpget")
+				$return_val = snmpget($hostname, $oid, $community)
+			}
+			else
+			{
+				log(DEBUG, "Calling snmpget_p")
+				$return_val = snmpget_p($hostname, $oid, $community, $port)
+			}
+			
+			log(DEBUG, "Return value : " + $return_val)
+
+		}
+		else
+		{
+			log(ERROR, "Missing input to " + $snmpreq + " request: " + $missing_arg)
+		}        				
+
+	case "SNMPGET_V2C"|"SNMPGET_V2C_P": 
+
+		if ( match($snmpreq, "SNMPGET_V2C_P") )
+		{
+			if ( !(exists($port)) )
+			{
+				$missing_arg=$missing_arg + "port "       				
+			}        				
+		}
+		if ( match($missing_arg, "") )
+		{
+			if ( match($snmpreq, "SNMPGET_V2C") )
+			{
+				log(DEBUG, "Calling snmpget_v2c")
+				$return_val = snmpget_v2c($hostname, $oid, $community)
+			}
+			else
+			{
+				log(DEBUG, "Calling snmpget_v2c_p")
+				$return_val = snmpget_v2c_p($hostname, $oid, $community, $port)
+			}
+			
+			log(DEBUG, "Return value : " + $return_val)
+
+		}
+		else
+		{
+			log(ERROR, "Missing input to " + $snmpreq + " request: " + $missing_arg)
+		}
+
+	case "SNMPGET_V3"|"SNMPGET_V3_P": 
+
+		if ( match($snmpreq, "SNMPGET_V3_P") )
+		{
+			if ( !(exists($port)) )
+			{
+				$missing_arg=$missing_arg + "port "       				
+			}        				
+		}
+		if ( !(exists($userid)) )
+		{
+			$missing_arg=$missing_arg + "userid "
+		}
+				
+		if ( match($missing_arg, "") )
+		{
+			if ( match($snmpreq, "SNMPGET_V3") )
+			{
+				log(DEBUG, "Calling snmpget_v3")
+				$return_val = snmpget_v3($hostname, $userid, $oid)
+			}
+			else
+			{
+				log(DEBUG, "Calling snmpget_v3_p")
+				$return_val = snmpget_v3_p($hostname, $userid, $oid, $port)
+			}
+			
+			log(DEBUG, "Return value : " + $return_val)
+
+		}
+		else
+		{
+			log(ERROR, "Missing input to " + $snmpreq + " request: " + $missing_arg)
+		}		
+		
+	default :
+	
+		log(ERROR, "Unrecognized request: " + $snmpreq)	
+}
+
+discard

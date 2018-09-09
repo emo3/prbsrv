@@ -1,6 +1,8 @@
 default['prbsrv']['cots_dir']    = '/cots'
 default['prbsrv']['app_dir']     = "#{node['prbsrv']['cots_dir']}/apps"
 default['prbsrv']['nc_dir']      = "#{node['prbsrv']['app_dir']}/netcool"
+default['prbsrv']['ob_dir']      = "#{node['prbsrv']['nc_dir']}/omnibus"
+default['prbsrv']['prb_dir']     = "#{node['prbsrv']['ob_dir']}/probes"
 default['prbsrv']['media_dir']   = "#{node['prbsrv']['app_dir']}/media"
 default['prbsrv']['install_dir'] = "#{node['prbsrv']['media_dir']}/ncp81"
 default['prbsrv']['temp_dir']    = '/tmp'
@@ -8,5 +10,7 @@ default['prbsrv']['media_url']   = 'http://10.1.1.30/media'
 default['prbsrv']['lv_name']     = 'lvnc'
 default['prbsrv']['nc_act']      = 'netcool'
 default['prbsrv']['nc_grp']      = 'ncoadmin'
+default['prbsrv']['ncoms']       = 'NCO'
+default['prbsrv']['arch']        = 'linux2x86'
 default['PAP']                   = ''
 default['PA']                    = ''

@@ -1,6 +1,6 @@
-# This will setup the gateways
-# create the mttrapd Gateway dir
-directory node['prbsrv']['rdy_dir'] do
+# This will setup the probes
+# create the base netcool dir
+directory node['prbsrv']['nc_dir'] do
   user node['prbsrv']['nc_act']
   group node['prbsrv']['nc_grp']
   mode '0755'
@@ -8,34 +8,50 @@ directory node['prbsrv']['rdy_dir'] do
   action :create
 end
 
-# copy mttrapd template from default location
-execute 'copy_default_mttrapd' do
-  command "find #{node['prbsrv']['ob_dir']}/probes/mttrapd -maxdepth 1 -type f -exec cp -t #{node['prbsrv']['rdy_dir']} {} +"
-  cwd '/usr/bin'
-  not_if { File.exist?("#{node['prbsrv']['rdy_dir']}/mttrapd.map") }
+######
+# create mttrapd configuration files
+# bi rules file
+template "#{node['prbsrv']['ob_dir']}/etc/mttrapd.bidir.rules" do
+  source 'mttrapd.bidir.rules.erb'
   user node['prbsrv']['nc_act']
   group node['prbsrv']['nc_grp']
-  action :run
+  mode 0444
 end
-
-# create mttrapd configuration files
-# map file
-template "#{node['prbsrv']['rdy_dir']}/mttrapd.map" do
-  source 'mttrapd.map.erb'
+# rules file
+template "#{node['prbsrv']['ob_dir']}/etc/mttrapd.rules" do
+  source 'mttrapd.rules.erb'
+  user node['prbsrv']['nc_act']
+  group node['prbsrv']['nc_grp']
+  mode 0444
+end
+# flood rules file
+template "#{node['prbsrv']['ob_dir']}/etc/mttrapd_flood_control.rules" do
+  source 'mttrapd_flood_control.rules.erb'
   user node['prbsrv']['nc_act']
   group node['prbsrv']['nc_grp']
   mode 0444
 end
 # props file
-template "#{node['prbsrv']['rdy_dir']}/G_BMC_mttrapd.props" do
-  source 'G_BMC_mttrapd.props.erb'
+template "#{node['prbsrv']['nc_dir']}/etc/mttrapd.props" do
+  source 'mttrapd.props.erb'
   user node['prbsrv']['nc_act']
   group node['prbsrv']['nc_grp']
   mode 0444
 end
-# env file
-template "#{node['prbsrv']['rdy_dir']}/nco_g_bmc_mttrapd.env" do
-  source 'nco_g_bmc_mttrapd.env.erb'
+
+######
+# create EIF configuration files
+# rules file
+template "#{node['prbsrv']['ob_dir']}/etc/tivoli_eif.rules" do
+  source 'tivoli_eif.rules.erb'
+  user node['prbsrv']['nc_act']
+  group node['prbsrv']['nc_grp']
+  mode 0444
+end
+
+# props file
+template "#{node['prbsrv']['nc_dir']}/etc/tivoli_eif.props" do
+  source 'tivoli_eif.props.erb'
   user node['prbsrv']['nc_act']
   group node['prbsrv']['nc_grp']
   mode 0444

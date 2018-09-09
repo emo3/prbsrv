@@ -1,0 +1,99 @@
+########################################################################
+#
+#       Licensed Materials - Property of IBM
+#
+#
+#
+#       (C) Copyright IBM Corp. 2002 - 2014. All Rights Reserved
+#
+#       US Government Users Restricted Rights - Use, duplication
+#       or disclosure restricted by GSA ADP Schedule Contract
+#       with IBM Corp.
+#
+#       ========================================================
+#       Module Information:
+#
+#       DESCRIPTION:
+#       mttrapd.props
+#
+#
+# Ident: $Id: mkprops 1.21 2003/08/20 15:29:09 csmith Development $
+#
+#######################################################################
+
+#######################################################################
+#
+# Property Name					Default
+#
+# Generic Properties
+#
+# AuthPassword          	: ''
+# AuthUserName          	: ''
+# AutoSAF               	: 0
+# Buffering             	: 0
+# BufferSize            	: 10
+# Help                  	: 0
+# LookupTableMode       	: 3
+# Manager               	: 'mttrapd'
+# MaxLogFileSize        	: 1048576
+# MaxRawFileSize        	: -1
+# MaxSAFFileSize        	: 1048576
+# MessageLevel          	: 'warn'
+# MessageLog            	: '$OMNIHOME/log/mttrapd.log'
+# MsgDailyLog           	: 0
+# MsgTimeLog            	: '0000'
+# Name                  	: 'mttrapd'
+# NetworkTimeout        	: 0
+# PollServer            	: 0
+# Props.CheckNames      	: TRUE
+# PropsFile             	: '$OMNIHOME/probes/<arch>/mttrapd.props'
+# RawCapture            	: 0
+# RawCaptureFile        	: '$OMNIHOME/var/mttrapd.cap'
+# RawCaptureFileAppend  	: 0
+# RawCaptureFileBackup  	: 0
+# RetryConnectionCount  	: 15
+# RetryConnectionTimeOut	: 30
+# RulesFile             	: '$OMNIHOME/probes/<arch>/mttrapd.rules'
+# SAFFileName           	: ''
+# Server                	: 'NCOMS'
+# ServerBackup          	: ''
+# StoreAndForward       	: 1
+# Version               	: 0
+#
+# Specific Properties
+#
+# ActiveHostnameDuration	: 30
+# BindAddress           	: ''
+# ConfPath              	: '$OMNIHOME/probes/<arch>:/export/build/tmp/${USERNAME} or ${LOGNAME}/solaris/Omnibus36/var'
+# FlushBufferInterval   	: 0
+# Heartbeat             	: 60
+# HostnameTableSize     	: 20000
+# LogStatisticsInterval 	: 0
+# MIBDirs               	: '$OMNIHOME/common/mibs'
+# MIBFile               	: '$OMNIHOME/probes/<arch>/mib.txt'
+# MIBs                  	: 'ALL'
+# NoNameResolution      	: 1
+# NoNetbiosLookups      	: 0
+# NonPrintableAsHex     	: 0
+# PersistentDir         	: '$OMNIHOME/var'
+# Port                  	: 162
+# Protocol              	: 'UDP'
+# QuietOutput           	: 1
+# RefreshHostnameInterval : 60
+# SleepTime             	: 1
+# SocketSize            	: 8192
+# TrapQueueMax          	: 20000
+# TrapStat              	: 0
+# snmpv3ONLY                    : 0
+# snmpv3MinSecurityLevel        : 1
+# DSALog                        : 0
+# DSAPeriod                     : 30
+# SnmpConfigChangeDetectionInterval : 1
+# UsmUserBase		         	: 2
+# ReuseEngineBoots        : 1
+#
+#######################################################################
+PropsFile             	: '<%= node['prbsrv']['prb_dir'] %>/<<%= node['prbsrv']['arch'] %>>/mttrapd.props'
+RulesFile             	: '<%= node['prbsrv']['prb_dir'] %>/<<%= node['prbsrv']['arch'] %>>/mttrapd.rules'
+ConfPath              	: '<%= node['prbsrv']['prb_dir'] %>/<<%= node['prbsrv']['arch'] %>>:/export/build/tmp/${USERNAME}'
+MIBFile               	: '<%= node['prbsrv']['prb_dir'] %>/<<%= node['prbsrv']['arch'] %>>/mib.txt'
