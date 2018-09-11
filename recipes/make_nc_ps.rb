@@ -5,5 +5,7 @@ include_recipe 'nc_base::make_nc_base'
 # include_recipe 'nc_base::add_x11'
 # install the netcool probes
 include_recipe '::install_probes'
-# setup and start Object server
+# setup nco_pa for probe
+include_recipe '::setup_netcool_ps'
+# setup both mttrapd and eif
 include_recipe '::setup_probes'
