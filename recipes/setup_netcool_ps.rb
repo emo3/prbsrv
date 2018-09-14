@@ -4,8 +4,8 @@ end
 
 # set the IP and ObjServ name
 set_hostname 'set ObjSrv server' do
-  host_ip   node['OSP']
-  host_name node['OS']
+  host_ip   node['prbsrv']['OSP']
+  host_name node['prbsrv']['OS']
   action :run
 end
 

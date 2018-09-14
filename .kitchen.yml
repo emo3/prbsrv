@@ -30,8 +30,3 @@ suites:
     verifier:
       inspec_tests:
         - test/smoke/default
-    attributes:
-      nc_pwd: <%= ENV['NCP'] %>
-      root_pwd: <%= ENV['RPW'] %>
-      OS: <%= ENV['OS'] %>
-      OSP: <%= ENV['OSP'] %>
