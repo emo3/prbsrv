@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------
-# 
+#
 #       Licensed Materials - Property of IBM
 #
 #       5724-P09
@@ -12,7 +12,7 @@
 #
 # ------------------------------------------------------------------
 #######################################################################
-#	This rulesfile has been developed in accordance to the IBM Netcool 
+#	This rulesfile has been developed in accordance to the IBM Netcool
 #	Rules Files Best Practices to perform the following functionality
 #
 #	1. De-duplicate events
@@ -26,12 +26,12 @@
 #	pairs in the event.
 #######################################################################
 
-# NOTE: Before running the Tivoli EIF probe please ensure that Java 
+# NOTE: Before running the Tivoli EIF probe please ensure that Java
 # 1.5 or later is included in your path. This can be confirmed by 
-# running ‘java -version’ from the command line.
+# running "java -version" from the command line.
 
 
-# Uncomment the following include line and part 2 below to use the ITM 
+# Uncomment the following include line and part 2 below to use the ITM
 # virtualization integration files found in .../extensions/itmvirtualization/ :
 
 # include "tivoli_eif_virtualization_pt1.rules"
@@ -82,8 +82,8 @@ else
 	switch($source)
 	{
 		case "dummy case statement": ### This will prevent syntax errors in case no includes are added below.
-			
-			# Uncomment the following include line when using the TotalStorage Productivity 
+
+			# Uncomment the following include line when using the TotalStorage Productivity
             # Center integration:
 
             # Uncomment the following include line when getting the rules from Probe Extensions package
@@ -99,20 +99,20 @@ else
 			# Uncomment the following include line when using the TADDM integration
 			# rules file found in .../extensions/taddm/ :
 
-			# include "tivoli_eif_taddm.rules" 
+			# include "tivoli_eif_taddm.rules"
 
         #case "Director_Server"
             # Uncomment the following include line when getting the rules from Probe Extensions package
-            # include "$NC_PROBE_EXT/eif/IBM_ISD/IBM_Systems_Director_Events.rules" 
-            
+            # include "$NC_PROBE_EXT/eif/IBM_ISD/IBM_Systems_Director_Events.rules"
+
 		default: ### We handle input from ITM here.
 			# ------------------------------------------------------------------
-			# Extract all of the fields we might require from the ITM situation.  
+			# Extract all of the fields we might require from the ITM situation.
 			# The ObjectServer will still work if extra quotes are left around
-			# the incoming fields but many of the products that OMNIbus integrates 
-			# with will fail so remove them. 
+			# the incoming fields but many of the products that OMNIbus integrates
+			# with will fail so remove them.
 			# ------------------------------------------------------------------
-			
+
 			foreach ( e in $* )
 			{
 				if(regmatch($e, "^'.*'$"))
@@ -125,16 +125,16 @@ else
 			# Default values for some key ObjectServer fields
 			# These may be overridden by the include rules files below
        			@Manager = "tivoli_eif probe on " + hostname()
-			if( exists( $ClassName ) ) 
+			if( exists( $ClassName ) )
 			{
 				@AlertGroup = $ClassName
-			} 
+			}
 			@Class = 6601
-			if( exists( $source ) ) 
+			if( exists( $source ) )
 			{
 				@Agent = $source
-			} 			
-			@Type = 1 
+			}
+			@Type = 1
 			@Grade = 1
 			if( exists( $severity ) )
 			{
@@ -161,7 +161,7 @@ else
 				}
 			}
 
-			# Uncomment the following include line when receiving events from TEC. 
+			# Uncomment the following include line when receiving events from TEC.
 			# Please note if the itm_event.rules file in used it may also populate TEC fields.
 			# include "$NC_PROBE_EXT/eif/IBM_TEC/tivoli_eif_tec.rules"
 
@@ -173,77 +173,77 @@ else
 
                         # This is the ITM vmware agent situation handling to set BSM_Identity for
                         # use with TBSM. The itm_event.rules file must also be uncommented when
-                        # this file is used. 
+                        # this file is used.
 
  			# include "kvm_tbsm.rules"
 
-                        # Uncomment the following include line to use the ITM predictive analytics 
+                        # Uncomment the following include line to use the ITM predictive analytics
 			# integration files found in .../extensions/itmpredictive/ :
 
 			# include "predictive_event.rules"
 
-			# Uncomment the following include line and part 1 above to use the ITM 
+			# Uncomment the following include line and part 1 above to use the ITM
 			# virtualization integration files found in .../extensions/itmvirtualization/ :
 
 			# include "tivoli_eif_virtualization_pt2.rules"
 
                         # Uncomment the following include line to use the BSM Identity rules for ITCAM for SOA
-                        # provided with TBSM in %OMNHOME%\probes\win23\tbsm_extensions on Windows 
+                        # provided with TBSM in %OMNHOME%\probes\win23\tbsm_extensions on Windows
                         # and in $OMNHOME/probes/tbsm_extensions for non-windows
 
                         # include "kd4_tbsm.rules"
 
                         # This is the ITCAM Agent for WebSphere MQ situation handling to set BSM_Identity for
                        	#  use with TBSM. The itm_event.rules file must also be uncommented when
-                       	#  this file is used. 
+                       	#  this file is used.
 
                        	# include "kmq_tbsm.rules"
 
                         # This is the ITCAM for Microsoft Applications - Active Directory Agent situation handling to set BSM_Identity for
                         # use with TBSM. The itm_event.rules file must also be uncommented when
-                        # this file is used. 
+                        # this file is used.
 
                         # include "k3z_tbsm.rules"
 
 
                         # This is the ITCAM for Microsoft Applications - Exchange Server Agent situation handling to set BSM_Identity for
                         # use with TBSM. The itm_event.rules file must also be uncommented when
-                        # this file is used. 
+                        # this file is used.
 
                         # include "kex_tbsm.rules"
 
 
                         # This is the ITCAM for Microsoft Applications - Hyper-V Agent situation handling to set BSM_Identity for
                         # use with TBSM. The itm_event.rules file must also be uncommented when
-                        # this file is used. 
+                        # this file is used.
 
                         # include "khv_tbsm.rules"
 
 
                         # This is the ITCAM for Microsoft Applications - SQL Server Agent situation handling to set BSM_Identity for
                         # use with TBSM. The itm_event.rules file must also be uncommented when
-                        # this file is used. 
+                        # this file is used.
 
                         # include "koq_tbsm.rules"
 
 
                         # This is the ITCAM for Microsoft Applications - Cluser Server Agent situation handling to set BSM_Identity for
                         # use with TBSM. The itm_event.rules file must also be uncommented when
-                        # this file is used. 
+                        # this file is used.
 
                         # include "kq5_tbsm.rules"
 
 
                         # This is the ITCAM for Microsoft Applications - IIS Server Agent situation handling to set BSM_Identity for
                         # use with TBSM. The itm_event.rules file must also be uncommented when
-                        # this file is used. 
+                        # this file is used.
 
                         # include "kq7_tbsm.rules"
 
 
                         # This is the ITCAM for Microsoft Applications - HIS Agent situation handling to set BSM_Identity for
                         # use with TBSM. The itm_event.rules file must also be uncommented when
-                        # this file is used. 
+                        # this file is used.
 
                         # include "kqh_tbsm.rules"
 
@@ -252,19 +252,18 @@ else
                         # provided with the z/OS Event Pump
 
                         # include "zos_event.rules"
-                        
+
                         # Uncomment the following include line to use the z/OS Event Pump user defined rules
                         # provided with the z/OS Event Pump
-                        
+
                         # include "zos_event_user_defined.rules"
-        
+
                         # Uncomment the following include line to use the TBSM Identify rules for the
-                        # z/OS Event Pump provided with TBSM in %OMNHOME%\probes\win23\tbsm_extensions on Windows 
+                        # z/OS Event Pump provided with TBSM in %OMNHOME%\probes\win23\tbsm_extensions on Windows
                         # and in $OMNHOME/probes/tbsm_extensions for non-windows
-                        
+
                         # include "zos_identity.rules"
-                        
+
 
 	}
 }
-
