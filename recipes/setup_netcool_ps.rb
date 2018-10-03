@@ -1,3 +1,10 @@
+# set the IP and PrbSrv name
+set_hostname 'set PrbSrv server' do
+  host_ip   node['prbsrv']['PSP']
+  host_name node['prbsrv']['PS']
+  action :run
+end
+
 set_hostname 'set chefsrv server' do
   action :run
 end
