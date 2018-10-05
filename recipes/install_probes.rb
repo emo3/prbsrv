@@ -1,5 +1,5 @@
 # Install the Netcool tools defined between ()
-%w(nco-p-mttrapd nco-p-tivoli-eif).each do |tool|
+%w(nco-p-mttrapd nco-p-tivoli-eif nco-p-stdin).each do |tool|
   install_tool 'do install tool' do
     tool_package node['nc_tools'][tool]['tool_package']
     tool_url node['nc_tools'][tool]['tool_url']
