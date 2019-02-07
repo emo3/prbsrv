@@ -91,3 +91,18 @@ template "#{node['prbsrv']['ob_dir']}/verify_nc.sql" do
   group node['prbsrv']['nc_grp']
   mode 0444
 end
+
+template "#{node['prbsrv']['nc_home']}/.bash_profile" do
+  source 'nc_bash_profile.erb'
+  owner node['prbsrv']['nc_act']
+  group node['prbsrv']['nc_grp']
+  mode '0755'
+end
+
+template "#{node['prbsrv']['nc_home']}/ncprofile-p" do
+  source 'ncprofile.erb'
+  owner node['prbsrv']['nc_act']
+  group node['prbsrv']['nc_grp']
+  mode '0755'
+  sensitive true
+end
