@@ -29,4 +29,5 @@ suites:
       - recipe[prbsrv::make_nc_ps]
     verifier:
       inspec_tests:
-        - test/smoke/default
+        - test/integration/default
+    attributes:

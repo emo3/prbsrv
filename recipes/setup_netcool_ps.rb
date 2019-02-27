@@ -84,6 +84,16 @@ service 'nco_pa' do
   action [:enable, :start]
 end
 
+# copy Netcool rules installed to $NCHOME
+execute 'copy_rules' do
+  command "cp -r #{node['prbsrv']['app_dir']}/NcKL/rules \
+    #{node['prbsrv']['nc_dir']}/rules"
+  cwd node['prbsrv']['nc_dir']
+  user node['prbsrv']['nc_act']
+  group node['prbsrv']['nc_grp']
+  not_if { File.exist?("#{node['prbsrv']['ob_dir']}/verify_nc.sql") }
+  action :run
+end
 # create sql file to verify netcool
 template "#{node['prbsrv']['ob_dir']}/verify_nc.sql" do
   source 'verify_nc.sql.erb'
