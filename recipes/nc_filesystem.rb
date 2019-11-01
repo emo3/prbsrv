@@ -9,7 +9,7 @@ directory node['prbsrv']['app_dir'] do
 end
 
 create_xfs 'create netcool extra file system' do
-  lv_size   '60G'
+  lv_size   node['PSG']
   lv_name   node['prbsrv']['lv_name']
   mnt_point node['prbsrv']['app_dir']
   action :run
