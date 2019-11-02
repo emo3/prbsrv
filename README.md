@@ -34,6 +34,15 @@ Also, tailor the subsections below:
 
 ## Usage
 
+The following environmental variables must be defined:
+  PS  = Probe Server Name: ncp
+  PSR = Ram for Server: 2048
+  PSC = CPUs for Server: 1
+  PSD = Disk Size for Server: 40960
+  PSP = Server IP: 10.1.1.41
+  chef_release = Version of Chef: 15.1.36
+  PSG = Disk Size in Gigs: 40G
+
 Todo: This will be unique depending on how the cookbook is developed and the
 tools it provides to configure nodes. Here's a simple example of using a
 cookbook and it's recipe. You'll want to elaborate on your own steps and include
