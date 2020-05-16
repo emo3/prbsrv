@@ -1,6 +1,5 @@
 default['prbsrv'].tap do |prb|
-  prb['cots_dir']    = '/cots'
-  prb['app_dir']     = "#{prb['cots_dir']}/apps"
+  prb['app_dir']     = "/apps"
   prb['nc_dir']      = "#{node['prbsrv']['app_dir']}/netcool"
   prb['ob_dir']      = "#{node['prbsrv']['nc_dir']}/omnibus"
   prb['prb_dir']     = "#{node['prbsrv']['ob_dir']}/probes"
