@@ -13,8 +13,8 @@ default['prbsrv'].tap do |prb|
   prb['nc_grp']      = 'ncoadmin'
   prb['ncoms']       = 'NCO'
   prb['arch']        = 'linux2x86'
-  prb['OS']          = 'eao'
+  prb['OS']          = 'nco'
   prb['OSP']         = '10.1.1.40'
-  prb['PS']          = 'eap'
+  prb['PS']          = 'ncp'
   prb['PSP']         = '10.1.1.41'
 end
