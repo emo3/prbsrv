@@ -9,7 +9,7 @@ default['prbsrv'].tap do |prb|
   prb['temp_dir']    = '/tmp'
   prb['media_url']   = 'http://10.1.1.30/media'
   prb['lv_name']     = 'lvnc'
-  prb['lv_size']     = '40962'
+  prb['lv_size']     = '40G'
   prb['nc_act']      = 'netcool'
   prb['nc_grp']      = 'ncoadmin'
   prb['ncoms']       = 'NCO'

@@ -9,8 +9,8 @@ chef_version '>= 13.0'
 supports 'redhat'
 supports 'centos'
 
-issues_url 'https://github.com/<insert_org_here>/prbsrv/issues' if respond_to?(:issues_url)
-source_url 'https://github.com/<insert_org_here>/prbsrv'
+issues_url 'https://github.com/emo3/prbsrv/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/emo3/prbsrv'
 
 depends 'nc_base'
 depends 'nc_tools'

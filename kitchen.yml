@@ -6,7 +6,7 @@ driver:
     cpus: 1
     createhd:
       - filename: disk1.vmdk
-        size: 40961
+        size: 40962
     storagectl:
       - name: SATA Controller
         portcount: 1
@@ -35,9 +35,6 @@ platforms:
 
 suites:
   - name: prbsrv
-    run_list:
-#      - recipe[objsrv::do_prs]
-      - recipe[prbsrv::make_nc_ps]
     verifier:
       inspec_tests:
         - test/integration/default
