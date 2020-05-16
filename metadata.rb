@@ -1,6 +1,6 @@
 name 'prbsrv'
 maintainer 'Ed Overton'
-maintainer_email 'infuse.1301@gmail.com'
+maintainer_email 'bogus@gmail.com'
 license 'Apache 2.0'
 description 'Installs/Configures prbsrv'
 long_description 'Installs/Configures prbsrv'
