@@ -18,15 +18,15 @@ nco_process 'PrimaryObjectServer'
 	ProcessType = PaPA_AWARE
 }
 
-nco_process 'PrimaryRemedyGateway'
+nco_process 'MttrapdProbe'
 {
-	Command '$OMNIHOME/bin/nco_g_bmc_remedy -name <%= node['prbsrv']['remedy'] %>' run as '<%= node['prbsrv']['nc_act'] %>'
+	Command '$OMNIHOME/probes/nco_p_mttrapd' run as 0
 	Host        = '<%= node['prbsrv']['OS'] %>'
 	Managed     = True
 	RestartMsg  = '${NAME} running as ${EUID} has been restored on ${HOST}.'
 	AlertMsg    = '${NAME} running as ${EUID} has died on ${HOST}.'
-	RetryCount  = 10
-	ProcessType = PaPA_AWARE
+	RetryCount  = 0
+	ProcessType = PaNOT_PA_AWARE
 }
 
 nco_process 'PrimaryJDBCGateway'
