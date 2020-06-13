@@ -16,7 +16,7 @@ end
 tcmd = []
 %w(nco-p-mttrapd nco-p-tivoli-eif).each do |cmd|
   tcmd << node['nc_tools'][cmd].merge(\
-    {'pa_name' => node['prbsrv']['os_pa_name']}).merge(\
+    {'pa_name' => node['prbsrv']['ps_pa_name']}).merge(\
     {'nc_act' => node['prbsrv']['nc_act']}).merge(\
     {'nc_pwd' => node['prbsrv']['nc_pwd']})
 end
