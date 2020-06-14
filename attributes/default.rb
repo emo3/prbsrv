@@ -31,4 +31,11 @@ default['prbsrv'].tap do |prb|
   prb['bi_port']     = '4300'
   prb['remedy_port'] = '4301'
   prb['tdw_port']    = '4302'
+  prb['mrules_file'] = 'snmptrap.rules'
+  prb['erules_file'] = 'tivoli_eif.rules'
+  prb['rdy_dir']     = "#{node['prbsrv']['ob_dir']}/etc/#{node['prbsrv']['remedy']}"
+  prb['tdw_dir']     = "#{node['prbsrv']['ob_dir']}/etc/#{node['prbsrv']['tdw']}"
+  prb['root_pwd']    = 'nc0Adm1n'
+  prb['pa_epwd']     = '@44:GlEwL3cFaU+Pfjcm5S7xNs00PubYXnWhTqEVDtgvUjo=@'
+  prb['encryption']  = 'AES'
 end
