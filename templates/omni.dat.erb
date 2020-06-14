@@ -34,22 +34,3 @@
 {
   Primary: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['os_port'] %>
 }
-
-# Define the Gateway(s)
-# Bi Directional Gateway to connect to Backup Object Server
-[<%= node['prbsrv']['bi-name'] %>]
-{
-  Primary: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['bi_port'] %>
-}
-
-# Remedy Gateway - Ticketing
-[<%= node['prbsrv']['remedy'] %>]
-{
-  Primary: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['remedy_port'] %>
-}
-
-# Tivoli Data Warehouse Gateway - Reporting
-[<%= node['prbsrv']['tdw'] %>]
-{
-  Primary: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['tdw_port'] %>
-}
