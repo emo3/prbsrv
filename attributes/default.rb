@@ -1,11 +1,9 @@
 default['prbsrv'].tap do |prb|
-  prb['app_dir']     = "/apps"
+  prb['app_dir']     = '/apps'
   prb['nc_dir']      = "#{node['prbsrv']['app_dir']}/netcool"
   prb['nc_home']     = '/home/netcool'
   prb['ob_dir']      = "#{node['prbsrv']['nc_dir']}/omnibus"
   prb['prb_dir']     = "#{node['prbsrv']['ob_dir']}/probes"
-  prb['media_dir']   = "#{node['prbsrv']['app_dir']}/media"
-  prb['install_dir'] = "#{node['prbsrv']['media_dir']}/ncp81"
   prb['temp_dir']    = '/tmp'
   prb['media_url']   = 'http://10.1.1.30/media'
   prb['lv_name']     = 'lvnc'
@@ -23,14 +21,8 @@ default['prbsrv'].tap do |prb|
   prb['ps_pa_name']  = 'NCP_PA'
   prb['p-ncoms']     = 'P_NCO'
   prb['b-ncoms']     = 'B_NCO'
-  prb['bi-name']     = 'BI_GATE'
-  prb['remedy']      = 'REMEDY_GATE'
-  prb['tdw']         = 'TDW_GATE'
   prb['os_port']     = '4100'
   prb['pa_port']     = '4200'
-  prb['bi_port']     = '4300'
-  prb['remedy_port'] = '4301'
-  prb['tdw_port']    = '4302'
   prb['mrules_file'] = 'snmptrap.rules'
   prb['erules_file'] = 'tivoli_eif.rules'
   prb['rdy_dir']     = "#{node['prbsrv']['ob_dir']}/etc/#{node['prbsrv']['remedy']}"
