@@ -11,3 +11,23 @@
     action :install
   end
 end
+
+# cmd tool file
+tcmd = []
+%w(nco-p-mttrapd nco-p-tivoli-eif).each do |cmd|
+  tcmd << node['nc_tools'][cmd].merge(\
+    {'pa_name' => node['prbsrv']['ps_pa_name']}).merge(\
+    {'nc_act' => node['prbsrv']['nc_act']}).merge(\
+    {'nc_pwd' => node['prbsrv']['nc_pwd']})
+end
+
+template "#{node['prbsrv']['nc_home']}/ncprofile-c" do
+  source 'ncprofilec.erb'
+  variables(
+    tools: tcmd
+  )
+  sensitive true
+  owner node['prbsrv']['nc_act']
+  group node['prbsrv']['nc_grp']
+  mode '0755'
+end

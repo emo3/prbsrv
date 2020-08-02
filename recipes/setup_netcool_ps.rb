@@ -43,13 +43,13 @@ template "#{node['prbsrv']['ob_dir']}/etc/#{node['prbsrv']['ncoms']}.props" do
 end
 
 # create configuration files for PA
-template "#{node['prbsrv']['ob_dir']}/etc/#{node['prbsrv']['os_pa_name']}.conf" do
+template "#{node['prbsrv']['ob_dir']}/etc/#{node['prbsrv']['ps_pa_name']}.conf" do
   source 'nco_pa.conf.erb'
   user node['prbsrv']['nc_act']
   group node['prbsrv']['nc_grp']
   mode 0444
 end
-template "#{node['prbsrv']['ob_dir']}/etc/#{node['prbsrv']['os_pa_name']}.props" do
+template "#{node['prbsrv']['ob_dir']}/etc/#{node['prbsrv']['ps_pa_name']}.props" do
   source 'nco_pa.props.erb'
   user node['prbsrv']['nc_act']
   group node['prbsrv']['nc_grp']
