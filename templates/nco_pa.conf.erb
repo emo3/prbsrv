@@ -20,7 +20,7 @@ nco_process 'MttrapdProbe'
 
 nco_process 'EifProbe'
 {
-	Command '$OMNIHOME/probes/nco_p_tivoli_eif run as '<%= node['prbsrv']['nc_act'] %>'
+	Command '$OMNIHOME/probes/nco_p_tivoli_eif' run as '<%= node['prbsrv']['nc_act'] %>'
 	Host        = '<%= node['prbsrv']['OS'] %>'
 	Managed     = True
 	RestartMsg  = '${NAME} running as ${EUID} has been restored on ${HOST}.'
