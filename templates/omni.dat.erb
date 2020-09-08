@@ -23,14 +23,14 @@
   Primary: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['os_port'] %>
 }
 
-# Primary Object Server
+# <%= node['prbsrv']['obs_domain'] %> Object Server
 [<%= node['prbsrv']['p-ncoms'] %>]
 {
-  Primary: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['os_port'] %>
+  <%= node['prbsrv']['obs_domain'] %>: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['os_port'] %>
 }
 
 # Backup Object Server
 [<%= node['prbsrv']['b-ncoms'] %>]
 {
-  Primary: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['os_port'] %>
+  <%= node['prbsrv']['obs_domain'] %>: <%= node['prbsrv']['OS'] %> <%= node['prbsrv']['os_port'] %>
 }
