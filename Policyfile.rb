@@ -14,6 +14,9 @@ run_list 'prbsrv::make_nc_ps'
 
 # Specify a custom source for a single cookbook:
 cookbook 'prbsrv',       path: '.'
-cookbook 'nc_base',      git: 'https://github.com/emo3/nc_base.git'
-cookbook 'nc_tools',     git: 'https://github.com/emo3/nc_tools.git'
-cookbook 'server_utils', git: 'https://github.com/emo3/server_utils.git'
+#cookbook 'nc_base',      git: 'https://github.com/emo3/nc_base.git'
+#cookbook 'nc_tools',     git: 'https://github.com/emo3/nc_tools.git'
+#cookbook 'server_utils', git: 'https://github.com/emo3/server_utils.git'
+cookbook 'nc_base',      path: '../nc_base'
+cookbook 'nc_tools',     path: '../nc_tools'
+cookbook 'server_utils', path: '../server_utils' 
