@@ -2,9 +2,3 @@ $OMNIHOME/bin/nco_pa_status -server NCO_PA -user netcool -password P@ssw0rd
 $OMNIHOME/bin/nco_pa_start  -server NCO_PA -user netcool -password P@ssw0rd -process PrimaryObjectServer
 $OMNIHOME/bin/nco_pa_stop   -server NCO_PA -user netcool -password P@ssw0rd -process PrimaryObjectServer
 $OMNIHOME/bin/nco_sql -server NCO_PA -user netcool -password P@ssw0rd
-Resource epel_local_repo needs `provides :epel_local_repo` in addition to `resource_name :epel_local_repo` declaration at 1 location:
-  - /opt/chef/embedded/lib/ruby/2.6.0/forwardable.rb:230:in `setup_run_context'
- See https://docs.chef.io/deprecations_resource_name_without_provides/ for further details.
-Resource install_tool needs `provides :install_tool` in addition to `resource_name :install_tool` declaration at 1 location:
-  - /opt/chef/embedded/lib/ruby/2.6.0/forwardable.rb:230:in `setup_run_context'
- See https://docs.chef.io/deprecations_resource_name_without_provides/ for further details.
