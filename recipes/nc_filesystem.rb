@@ -8,6 +8,9 @@ directory node['prbsrv']['app_dir'] do
   action :create
 end
 
+# need to have lvm2 installed
+package 'lvm2'
+
 create_xfs 'create netcool extra file system' do
   lv_size   node['prbsrv']['lv_size']
   lv_name   node['prbsrv']['lv_name']
