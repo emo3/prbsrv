@@ -32,7 +32,6 @@ verifier:
 
 platforms:
   - name: centos-7
-  - name: centos-8
 
 suites:
   - name: prbsrv
