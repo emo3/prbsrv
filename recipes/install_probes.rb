@@ -1,6 +1,6 @@
 # Install the Netcool tools defined between ()
 %w(nco-p-mttrapd nco-p-tivoli-eif nco-p-stdin).each do |tool|
-  install_tool 'do PRB install tool' do
+  install_tool tool do
     tool_package node['nc_tools'][tool]['tool_package']
     tool_url node['nc_tools'][tool]['tool_url']
     tool_dir node['nc_tools'][tool]['tool_dir']
@@ -16,9 +16,9 @@ end
 tcmd = []
 %w(nco-p-mttrapd nco-p-tivoli-eif).each do |cmd|
   tcmd << node['nc_tools'][cmd].merge(\
-    {'pa_name' => node['prbsrv']['ps_pa_name']}).merge(\
-    {'nc_act' => node['prbsrv']['nc_act']}).merge(\
-    {'nc_pwd' => node['prbsrv']['nc_pwd']})
+    { 'pa_name' => node['prbsrv']['ps_pa_name'] }).merge(\
+    { 'nc_act' => node['prbsrv']['nc_act'] }).merge(\
+    { 'nc_pwd' => node['prbsrv']['nc_pwd'] })
 end
 
 template "#{node['prbsrv']['nc_home']}/ncprofile-c" do
